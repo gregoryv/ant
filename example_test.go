@@ -32,11 +32,7 @@ func (me Binding) Set(v interface{}) error {
 	case *App:
 		v.bind = string(me)
 	default:
-		return setErr(me, v)
+		return ant.SetFailed(v, me)
 	}
 	return nil
-}
-
-func setErr(setting, v interface{}) error {
-	return fmt.Errorf("%t cannot be set on %t", setting, v)
 }
