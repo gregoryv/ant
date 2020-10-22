@@ -1,7 +1,9 @@
-package ant
+package ant_test
 
 import (
 	"fmt"
+
+	"github.com/gregoryv/ant"
 )
 
 func ExampleSetting() {
@@ -11,28 +13,16 @@ func ExampleSetting() {
 	// :9090
 }
 
-func NewApp(settings ...Setting) *App {
+func NewApp(settings ...ant.Setting) *App {
 	app := &App{
-		bind: ":8080",
+		bind: ":8080", // default
 	}
-	if err := app.Use(settings...); err != nil {
-		panic(err)
-	}
+	ant.MustConfigure(app, settings...)
 	return app
 }
 
 type App struct {
 	bind string
-}
-
-// Use applies the given settings on this service.
-func (me *App) Use(settings ...Setting) error {
-	for _, setting := range settings {
-		if err := setting.Set(me); err != nil {
-			return err
-		}
-	}
-	return nil
 }
 
 type Binding string

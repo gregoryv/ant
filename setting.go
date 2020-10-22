@@ -1,4 +1,3 @@
-// Package ant provides a setting interface.
 package ant
 
 // Setting is anything that can be set on some entity
