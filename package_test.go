@@ -1,6 +1,7 @@
 package ant
 
 import (
+	"fmt"
 	"testing"
 )
 
@@ -17,6 +18,13 @@ func TestMustConfigure(t *testing.T) {
 		}
 	}()
 	MustConfigure(nil, &badSetting{})
+}
+
+func ExampleConfigure_badSettings() {
+	err := Configure(1, &badSetting{})
+	fmt.Println(err)
+	// output:
+	// failed to set ant.badSetting on int
 }
 
 type badSetting struct{}

@@ -1,4 +1,20 @@
-// Package ant provides a setting interface.
+/*
+Package ant provides a setting interface.
+
+Apply settings with the configure funcs
+
+   var (
+       x X
+       setting1 ant.Setting
+       setting2 ant.Setting
+   )
+   err := ant.Configure(&x, setting1, setting2)
+
+or
+
+   ant.MustConfigure(&x, setting1, setting2)
+
+*/
 package ant
 
 import "fmt"
@@ -22,7 +38,7 @@ func MustConfigure(v interface{}, settings ...Setting) {
 }
 
 // SetFailed returns a preformated error stating type of setting and
-// type of value.
+// type of value. Use it in settings for normalized setting errors.
 func SetFailed(v interface{}, setting Setting) error {
 	return fmt.Errorf("failed to set %T on %T", setting, v)
 }
