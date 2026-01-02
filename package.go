@@ -3,17 +3,16 @@ Package ant provides a setting interface.
 
 Apply settings with the configure funcs
 
-   var (
-       x X
-       setting1 ant.Setting
-       setting2 ant.Setting
-   )
-   err := ant.Configure(&x, setting1, setting2)
+	var (
+	    x X
+	    setting1 ant.Setting
+	    setting2 ant.Setting
+	)
+	err := ant.Configure(&x, setting1, setting2)
 
 or
 
-   ant.MustConfigure(&x, setting1, setting2)
-
+	ant.MustConfigure(&x, setting1, setting2)
 */
 package ant
 
